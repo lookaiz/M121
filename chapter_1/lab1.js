@@ -5,6 +5,8 @@
 // rated is either "PG" or "G"
 // languages contains "English" and "Japanese"
 
+// MATCH
+//////////
 var pipeline = [
     {
       $match: {
@@ -18,9 +20,32 @@ var pipeline = [
       }
     }
     ]
-
-
 db.movies.aggregate(pipeline).itcount()
+
+// PROJECT
+////////////
+var pipeline = [
+    {
+      $match: {
+      	$and: [
+        	{"imdb.rating": { $gte: 7 }},
+			{"genres": 		{ $nin: ["Crime", "Horror"]}},
+			{"rated": 		{ $in:  ["PG", "G"]}},
+			{"languages": 	{ $in:  ["English"]}},
+			{"languages": 	{ $in:  ["Japanese"]}}
+		]
+      }
+    },
+    {
+    	$project: {
+      		_id: 0,
+      		title: 1,
+      		rated: 1
+      	}
+    }
+    ]
+
+db.movies.aggregate(pipeline).pretty()
 
 
 {
