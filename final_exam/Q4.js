@@ -35,13 +35,7 @@ var pipeline = [
   	}
   ]
 
-  var pipeline = [
-	{
-    	"$match": {	"a": {"$type": "int"} }
-  	}
-  ]
-
-  // ERROR STATEMANTS
+// ERROR STATEMANTS
 
 * can not nest a $facet stage as a sub-pipeline
 "TRUE": $facet stage cannot be nested

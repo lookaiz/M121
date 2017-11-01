@@ -66,27 +66,3 @@ var pipeline = [
 ]
 
 db.movies.aggregate(pipeline)
-
-
-
-
-
-
- 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
