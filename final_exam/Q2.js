@@ -44,7 +44,7 @@ db.collection.aggregate([
 // STATEMENTS
 --------------
 * Pipeline 1 is incorrect because you cannot use an accumulator expression in a $match stage
-"TRUE": accumulator expressions can only be used in $project or $group stages
+"TRUE": accumulator expressions can only be used in $project or $group stages. Only query expressions are allowed within $match
 
 * Pipeline 2 is incorrect since $divide cannot operator over field expressions
 "FALSE": $divide can operate over field expressions
@@ -53,7 +53,8 @@ db.collection.aggregate([
 "TRUE": $divide only supports numeric types, not array and double
 
 * Pipeline 3 is correct and will execute with no error
-"TRUE"
+"TRUE" : Although we may argue that $ROOT variable is totally unnecessary,
+since _id field will be projected by default from the first $project stage of this pipeline, there are no observable errors with the use of this expression variable
 
 * Pipeline 1 will fail because $max can not operator on _id field
 "FALSE": $max can operate on _id field

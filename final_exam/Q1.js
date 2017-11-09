@@ -48,7 +48,7 @@ db.coll.aggregate([
 --------------
 
 * Pipeline 2 is incorrect because $neoGear needs to be the first stage of our Pipeline
-"TRUE" : $geoNear must be the first stage of the pipeline
+"TRUE" : $geoNear is required to be the first stage of a pipeline
 
 * Pipeline 2 fails because we cannot project distance field
 "FALSE"
@@ -60,7 +60,7 @@ db.coll.aggregate([
 "TRUE" : the $out stage must be the last stage in a pipeline
 
 * Pipeline 3 fails because $indexStats must be the first stage in a pipeline and may not be usedwithin a $facet
-"TRUE" : $indexStats must be the first stage of an aggregation pipeline
+"TRUE" : $indexStats must be the first stage in an aggregation pipeline and cannot be used within a $facet stage
 
 * Pipeline 3 fails since you can only have one $facet stage per pipeline
 "FALSE" : we can use many $facet stage within a same aggregation pipeline
